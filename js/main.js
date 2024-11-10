@@ -4,8 +4,6 @@ const embedEngine = {
     },
     binds() {
 
-        let scrollToTopBtn = document.querySelector(".scrollup");
-
         const menuBtnRef = document.querySelector("[data-menu-button]");
         const mobileMenuRef = document.querySelector("[data-menu]");
         const expanded =
@@ -36,21 +34,31 @@ const embedEngine = {
                 document.documentElement.scrollTop > 466
             ) {
                 document.querySelector(".nav").classList.add("nav--sticky");
-                scrollToTopBtn.classList.add("showBtn");
             } else {
                 document.querySelector(".nav").classList.remove("nav--sticky");
-                scrollToTopBtn.classList.remove("showBtn");
             }
         }
-        function scrollToTop() {
-            document.querySelector(".hero").scrollTo({
-                top: 0,
-                behavior: "smooth",
+
+
+
+        const buttons = document.querySelectorAll('.btn-acc');
+
+        buttons.forEach(function(btn) {
+            const hiddenContent = btn.closest('.block').querySelector('.block-content--hidden');
+            const block = btn.closest('.block');
+
+            btn.addEventListener('click', function() {
+                if (hiddenContent.style.maxHeight) {
+                    hiddenContent.style.maxHeight = null;
+                    btn.classList.remove('active');
+                    block.classList.remove('active');
+                } else {
+                    hiddenContent.style.maxHeight = hiddenContent.scrollHeight + 'px';
+                    btn.classList.add('active');
+                    block.classList.add('active');
+                }
             });
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
-        scrollToTopBtn.addEventListener("click", scrollToTop);
+        });
     },
 };
 document.addEventListener("DOMContentLoaded", embedEngine.init);

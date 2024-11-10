@@ -32,10 +32,16 @@
     .section-content-image--wrapper img {
         width: 200%;
     }
+    .hidden-wrap{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 
 @media screen and (min-width: 769px) {
+    .icon-zodiac{
+        display: block;
+    }
     .section {
         padding: 80px 0;
     }
@@ -91,7 +97,7 @@
         align-items: center;
     }
     .section-bottom{
-        margin-bottom: 120px;
+        padding:150px 0;
     }
     .figure-regular{
         flex-direction: row;
@@ -99,26 +105,43 @@
     }
 }
 @media (min-width:1000px) {
-    .section-figure {
-        display: flex;
-        align-items: center
-    }
-
-    .section-figure img, .section-figure picture {
-        width: auto;
-    }
-
-    .section-figure__caption {
-        max-width: 531px;
-        position: absolute;
-        left: 16px;
-        padding: 30px;
-        top: 50%;
-        transform: translateY(-50%);
+    .section-content-image--wrapper{
+        margin: 0 -16px;
     }
 }
 
 @media(min-width: 1200px) {
+    .section-figure {
+        display: flex;
+        align-items: center
+    }
+    .section-figure.reverse {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .section-figure img, .section-figure picture {
+        width: auto;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .reverse.section-figure img, .reverse.section-figure picture {
+        right: auto;
+        left: 0;
+    }
+
+    .section-figure__caption {
+        max-width: 706px;
+        padding: 40px 84px 40px 40px;
+        margin-top: 0;
+    }
+
+    .reverse .section-figure__caption {
+        padding: 40px 40px 40px 84px;
+    }
     .section-title {
         font-size:30px;
     }
@@ -136,6 +159,14 @@
     }
     .nav-list--link {
         line-height: 19px;
+    }
+    .section-zodiac{
+        background-repeat: repeat;
+    }
+    .section-gradient{
+        background-image: url("../img/gradient-bg.png");
+        background-position: center;
+        background-repeat: repeat;
     }
 }
 
